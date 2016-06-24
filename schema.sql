@@ -1,17 +1,3 @@
-CREATE TABLE packages (
-  id INTEGER PRIMARY KEY,
-  shipping_customer INTEGER NOT NULL,
-  receiving_customer INTEGER NOT NULL,
-  destination_address INTEGER NOT NULL,
-  sent_on TEXT NOT NULL,
-  due_on TEXT NOT NULL,
-  received_on TEXT,
-
-  FOREIGN KEY(shipping_customer) REFERENCES customers(id),
-  FOREIGN KEY(receiving_customer) REFERENCES customers(id),
-  FOREIGN KEY(destination_address) REFERENCES addresses(id)
-);
-
 CREATE TABLE customers (
   id INTEGER PRIMARY KEY,
   name TEXT NOT NULL,
@@ -25,6 +11,20 @@ CREATE TABLE addresses (
   city TEXT NOT NULL,
   country TEXT NOT NULL,
   planet TEXT NOT NULL
+);
+
+CREATE TABLE packages (
+  id INTEGER PRIMARY KEY,
+  shipping_customer INTEGER NOT NULL,
+  receiving_customer INTEGER NOT NULL,
+  destination_address INTEGER NOT NULL,
+  sent_on TEXT NOT NULL,
+  due_on TEXT NOT NULL,
+  received_on TEXT,
+
+  FOREIGN KEY(shipping_customer) REFERENCES customers(id),
+  FOREIGN KEY(receiving_customer) REFERENCES customers(id),
+  FOREIGN KEY(destination_address) REFERENCES addresses(id)
 );
 
 CREATE TABLE customer_addresses (
